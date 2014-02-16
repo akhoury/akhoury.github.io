@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <title>/akhoury</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="description" content="/akhoury random pages">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link href="//www.google-analytics.com" rel="dns-prefetch">
+    <link href="/images/favicon.ico" rel="shortcut icon">
+    <link href="/images/touch.png" rel="apple-touch-icon-precomposed">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/style.css">
+    <!--[if lt IE 9]>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/es5-shim/2.0.8/es5-shim.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+	<h1 id="jquery-conference-2014">jQuery Conference 2014</h1>
+<p><a href="http://twitter.com/jqcon">@jqcon</a></p>
+<h2 id="readme">Readme</h2>
+<h3 id="-span-class-jqc-alert-jqc-danger-all-the-talks-were-video-recorded-they-are-__not__-up-on-the-site-http-events-jquery-org-2014-san-diego-yet-but-they-will-be-soon-some-of-the-talks-are-not-worth-reading-the-slides-without-the-video-i-will-update-this-page-when-the-videos-become-available-eta-2-weeks-"><span class="jqc-alert jqc-danger">All the talks were video recorded, they are <strong>NOT</strong> up on the <a href="http://events.jquery.org/2014/san-diego/">site</a> yet but they will be soon - some of the talks are not worth reading the slides without the video, I will update this page when the videos become available, ETA 2 weeks.</h3>
+<p>oh and I gave each talk (<strong>not the speakers, as I am in no position to do so</strong>) a <em>totally opinionated letter-grade (A+/-,B+/-)</em> based on technicality importance, level and how funny it was, I&#39;m probably wrong, but that&#39;s my opinion</p>
+<p><br></p>
+<h2 id="talks-attended">Talks attended</h2>
+<p><br></p>
+<h3 id="the-state-of-jquery-a-a-href-http-www-slideshare-net-dmethvin-j-query-conference-san-diego-web-performance-31143457-i-class-fa-fa-files-o-i-a-">The State of jQuery (A-) <a href="http://www.slideshare.net/dmethvin/j-query-conference-san-diego-web-performance-31143457"><i class="fa fa-files-o"></i></a></h3>
+<h5 id="with-dave-methvin-a-href-http-twitter-davemethvin-i-class-fa-fa-twitter-i-a-a-href-http-github-com-demethvin-i-class-fa-fa-github-alt-i-a-a-href-mailto-dave-jquery-com-i-class-fa-fa-envelope-o-i-a-">with Dave Methvin <a href="http://twitter/davemethvin"><i class="fa fa-twitter"></i></a> <a href="http://github.com/demethvin"><i class="fa fa-github-alt"></i></a> <a href="mailto:dave@jquery.com"><i class="fa fa-envelope-o"></i></a></h5>
+<h4 id="abstract">Abstract</h4>
+<blockquote>
+<p>jQuery continues to evolve to meet the needs of web developers. House cleaning in jQuery Core 1.9 and 2.0 has whittled away the fat and cruft from the API, plus the ability to create custom builds means you don&#39;t need to load what you don&#39;t use. When performance problems arise, however, it&#39;s important to understand how your use of jQuery can affect performance. We&#39;ll bust a few myths about what makes web pages slow and use some readily available tools to identify the real performance</p>
+</blockquote>
+<h4 id="my-notes-">My notes:</h4>
+<ul>
+<li>to get 60 frames/second browsers calculate and render in a rate of 16ms/frame, anything slower than that is visible to the user; use the dev tool to figure out what&#39;s slowing it down, examples:</li>
+<li>don&#39;t use <code>:visible</code> and <code>:hidden</code> selectors</li>
+<li>avoid <code>$el.width(), outerWidth(), height(), etc.</code> as they trigger recalculation of styles</li>
+<li>if your assets are injected, meaning the browser cannot prefetch them, but you know the resource urls, use something like <code>&lt;link rel=&quot;prefetch&quot; href=&quot;stripes.jpg&quot;&gt;</code> and <code>&lt;link rel=&quot;dns-prefetch&quot; href=&quot;www.googleanalytics.com&quot;&gt;</code></li>
+<li>minimize document-wide style-class changes, use <code>data-*</code> attrs instead, or the <code>$el.data()</code></li>
+<li>checkout IE11 dev tools, yes <strong>IE</strong>, pretty nice on figuring out bottlenecks, with nested iteration counts and such</li>
+</ul>
+<p><br></p>
+<h3 id="measpace-chat-the-future-meat-b-a-href-https-dl-dropboxusercontent-com-u-1913694-jquery-san-diego-index-html-i-class-fa-fa-files-o-i-a-">Measpace Chat - The Future Meat (B-) <a href="https://dl.dropboxusercontent.com/u/1913694/jquery-san-diego/index.html"><i class="fa fa-files-o"></i></a></h3>
+<h5 id="with-edna-piranha-a-href-https-twitter-com-ednapiranha-i-class-fa-fa-twitter-i-a-a-href-https-github-com-ednapiranha-i-class-fa-fa-github-alt-i-a-a-href-mailto-jen-meatspac-es-i-class-fa-fa-envelope-o-i-a-">with Edna Piranha <a href="https://twitter.com/ednapiranha"><i class="fa fa-twitter"></i></a> <a href="https://github.com/ednapiranha"><i class="fa fa-github-alt"></i></a> <a href="mailto:jen@meatspac.es"><i class="fa fa-envelope-o"></i></a></h5>
+<blockquote>
+<p><a href="https://chat.meatspac.es/">chat.meatspac.es</a> is a chat app that mixes Websockets, webRTC, animated GIFs.
+Creator Edna Piranha will talk about how it came together, the months-long beta test, the app&#39;s sudden popularity, as well as expanding to support third-party APIs and the growing Meatspace ecosystem.</p>
+</blockquote>
+<h4 id="my-notes-">My notes:</h4>
+<ul>
+<li>Pretty cool open source app, can use it at work? pl0x!</li>
+<li>She said they are generating GIF client side, that&#39;s neat, didn&#39;t say how, gotta see the <a href="https://github.com/meatspaces/meatspace-chat">source</a></li>
+<li>no technical knowledge benefit as the speaker didn&#39;t dive in the code, but if you want to learn about <strong>websockets</strong> and <strong>webRTC</strong>, that&#39;s good, <em>they are the future</em>, and pretty cool, google them</li>
+</ul>
+<p><br></p>
+<h3 id="a-little-this-a-little-_that-understanding-scope-in-javascript-a-a-href-http-davidql-github-io-scope_talk-i-class-fa-fa-files-o-i-a-">A Little This, a Little _that: Understanding Scope in JavaScript (A-) <a href="http://davidql.github.io/scope_talk"><i class="fa fa-files-o"></i></a></h3>
+<h5 id="with-david-aragon-a-href-https-twitter-com-davidmaragon-i-class-fa-fa-twitter-i-a-a-href-https-github-com-davidql-i-class-fa-fa-github-alt-i-a-">with David Aragon <a href="https://twitter.com/davidmaragon"><i class="fa fa-twitter"></i></a> <a href="https://github.com/davidql"><i class="fa fa-github-alt"></i></a></h5>
+<h4 id="abstract">Abstract</h4>
+<blockquote>
+<p>Scope is one of the most critical concepts in JavaScript, but even seasoned front-end developers have trouble with the the meaning of <code>this</code>. It doesn’t have to be this way. Once you learn the few simple rules that govern JavaScript scope, your code will become more precise and flexible. Let’s take a deep dive into what scoping means in JavaScript. In this talk you’ll learn why scope is critical to applications running in a browser environment, what the heck all this talk of <code>this</code> and <code>_that</code> is about, as well as how to avoid some pitfalls even the experts make.</p>
+</blockquote>
+<h4 id="my-notes-">My notes:</h4>
+<ul>
+<li>think of <code>this</code> as the subject of the sentence</li>
+<li>stuff that you should already know<ul>
+<li><code>a = 1</code> without a <code>var</code> leaks to the global scope</li>
+<li>no block scope in JS, just functional</li>
+<li>use <code>fn.bind()</code>, <code>$.proxy()</code>, <code>_.bind()</code>, <code>fn.apply</code> or <code>fn.call</code> to pass a context (the last 2 are the fastest)</li>
+<li><code>new fn()</code> means new scope</li>
+<li>use <a href="http://en.wikipedia.org/wiki/Immediately-invoked_function_expression">IIFE</a>s to contain the scope</li>
+</ul>
+</li>
+<li>ES6 stuff, don&#39;t use in production yet, browser support is very limited<ul>
+<li><code>let</code> keyword within a block (<code>if</code>, <code>else</code>, <code>for</code>, etc.) scopes the variable within the block example:<pre><code>var a = 1;
+if (true) {
+let a = 2;
+}
+console.log(a); // prints 1</code></pre>
+</li>
+<li>fat arrow functions inherits the scope, kinda like using bind(this) so now<pre><code class="lang-javascript">// say you want to set a timeout before the class add
+// instead of doing this,
+$(&#39;.btn&#39;).click(function(){
+var _that = this;
+setTimeout(function(){
+   $(_that).addClass(&#39;clicked&#39;);
+}, 1000);
+});
+// you can do this
+$(&#39;.btn&#39;).click(() =&gt; {
+setTimeout(() =&gt; {
+   // &#39;this&#39; is still the .btn element, it was inherited
+   $(this).addClass(&#39;clicked&#39;);
+}, 1000);
+});</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h3 id="digging-debugging-a-a-href-http-www-randomthink-net-presentations-jqcon-san-diego-2014-digging-debugging-presentation-i-class-fa-fa-files-o-i-a-">Digging, Debugging (A) <a href="http://www.randomthink.net/presentations/jqcon-san-diego-2014-digging-debugging/presentation/"><i class="fa fa-files-o"></i></a></h3>
+<h5 id="with-brian-arnold-a-href-https-twitter-com-brianarn-i-class-fa-fa-twitter-i-a-a-href-https-github-com-brianarn-i-class-fa-fa-github-alt-i-a-a-href-mailto-brianarn-gmail-com-i-class-fa-fa-envelope-o-i-a-">with Brian Arnold <a href="https://twitter.com/brianarn"><i class="fa fa-twitter"></i></a> <a href="https://github.com/brianarn"><i class="fa fa-github-alt"></i></a> <a href="mailto:brianarn@gmail.com"><i class="fa fa-envelope-o"></i></a></h5>
+<h4 id="abstract">Abstract</h4>
+<blockquote>
+<p>You&#39;re putting your application together, but now you&#39;re getting some sort of weird errors, and you&#39;re not exactly sure where the heck to start looking. Did you mess something up, or are you bringing in some plugin that might be broken in a weird way that only you&#39;ve hit? Having spent the last few years debugging code that he didn&#39;t write, Brian will show you how to dig into code using the latest developer tools in today&#39;s browsers in order to find and fix (or at least isolate) what&#39;s broken. We&#39;ll be using the console along with DOM inspection and source viewing to find all the bugs!&quot;</p>
+</blockquote>
+<h4 id="my-notes-">My notes:</h4>
+<ul>
+<li>in the dev tools, this is a list I compiled of the stuff new to me, for the whole list, wait for the video<ul>
+<li><code>$0</code> is the last inspected element</li>
+<li><code>inspect(elmement)</code> to focus on a element, i.e <code>inspect($0);</code></li>
+<li><code>copy(JSON.stringify(someObject, null, &#39;    &#39;));</code> to copy an object as JSON to your clipboard</li>
+<li><code>console.time()</code> and <code>console.timeEnd()</code> instead of creating dates and doing diffs</li>
+<li><code>dir(element)</code> to make it a JS object, which you can collpase and expand in the console</li>
+<li>while debugging with breakpoints, you can press and hold play button to ignore all breakpoints for a 1/2 second, say you figured out kinda what to do and you don&#39;t want to click play multiple times to continue execution</li>
+<li><code>console.group()</code> and <code>console.groupEnd()</code> to aggregate related and nested logs within functions and nested stack calls</li>
+<li>DOM breakpoints are awesome, right click &gt; break on &gt; choose one</li>
+<li>cmd+o to search within sources</li>
+<li>XHR breakpointsa and Event Listeners should be used more often</li>
+<li>conditional breakpoints, right click on a breakpoint, insert code, as long as it&#39;s <em>truthy</em> it will execute within the relevant scope</li>
+<li>You can tell chrome to NOT to step-into sources that you don&#39;t care about while debugging, pretty neat, chome://flags &gt; Enable Developer Tools experiments &gt; relaunch chrome &gt; open dev tools &gt; click on the Gear icon &gt; Experiments &gt; Enable frameworks debugging support &gt; close then reopen dev tools &gt; gear icon&gt; General &gt; enable Skip stepping through sources with particular names &gt; insert a pattern i.e <code>/externa/libs/jquery</code> or whatever regexp in there, and now Chrome will not step into jquery specific functions, but rather step over, unless the callbacks source live somewhere else, like your code. try it.</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h3 id="effective-jquery-patterns-for-maintainability-and-performance-a-a-href-http-jzaefferer-github-io-effective-jquery-i-class-fa-fa-files-o-i-a-">Effective jQuery - Patterns for maintainability and performance (A-) <a href="http://jzaefferer.github.io/effective-jquery/"><i class="fa fa-files-o"></i></a></h3>
+<h5 id="with-j-rn-zaefferer-a-href-https-twitter-com-bassistance-i-class-fa-fa-twitter-i-a-a-href-https-github-com-jzaefferer-i-class-fa-fa-github-alt-i-a-a-href-mailto-joern-zaefferer-gmail-com-i-class-fa-fa-envelope-o-i-a-">with Jörn Zaefferer <a href="https://twitter.com/bassistance"><i class="fa fa-twitter"></i></a> <a href="https://github.com/jzaefferer"><i class="fa fa-github-alt"></i></a> <a href="mailto:joern.zaefferer@gmail.com"><i class="fa fa-envelope-o"></i></a></h5>
+<h4 id="abstract">Abstract</h4>
+<blockquote>
+<p>Most people have a driver&#39;s license, but very few are race car drivers. Every web developer knows jQuery, but very few make use of all its potential. This talk will cover some basics from a new perspective, to make more effective use of the finely tuned library we all seem to know so well. For example, how to structure your markup, CSS and JS for them to work well together while promoting maintainability of all three; how to use CSS3 transitions with fallbacks; how to deal with bad APIs with Deferreds; and more.</p>
+</blockquote>
+<h4 id="my-notes-">My notes:</h4>
+<ul>
+<li>smart dude, talk was pretty good for a junior, I didn&#39;t take notes, review the slides or wait for the video</li>
+</ul>
+<p><br /></p>
+<h3 id="hacking-front-end-apps-a-a-href-https-speakerdeck-com-slexaxton-hacking-front-end-apps-i-class-fa-fa-files-o-i-a-">Hacking Front-End Apps (A) <a href="https://speakerdeck.com/slexaxton/hacking-front-end-apps"><i class="fa fa-files-o"></i></a></h3>
+<h5 id="with-alex-sexton-a-href-https-twitter-com-slexaxton-i-class-fa-fa-twitter-i-a-a-href-https-github-com-slexaxton-i-class-fa-fa-github-alt-i-a-a-href-mailto-alexsexton-gmail-com-i-class-fa-fa-envelope-o-i-a-">with Alex Sexton <a href="https://twitter.com/slexaxton"><i class="fa fa-twitter"></i></a> <a href="https://github.com/SlexAxton"><i class="fa fa-github-alt"></i></a> <a href="mailto:AlexSexton@gmail.com"><i class="fa fa-envelope-o"></i></a></h5>
+<h4 id="abstract">Abstract</h4>
+<blockquote>
+<p>Writing web applications is fun. Getting hacked is not fun. This talk will walk through several different ways that websites, especially front-end heavy ones, are being hacked. It will cover cross site scripting, and resource forgery as well as introduce some protective measures for writing secure web apps.</p>
+</blockquote>
+<h4 id="my-notes-most-of-them-are-just-gibberish-was-pretty-quick">My notes, most of them are just gibberish, was pretty quick</h4>
+<ul>
+<li>html() vs text(), handlebars syntax: <code>{{}}</code> vs <code>{{{}}}</code></li>
+<li><a href="https://github.com/samyk/evercookie">Evercookie</a> is sick</li>
+<li><a href="http://searchsecurity.techtarget.com/news/1333757/Billy-Hoffman-on-AJAX-security-and-browser-attacks">whitespace attack, billy hoffman</a></li>
+<li>CSS hacks :visited, to detect which sites the user visited, look up htc hacks also</li>
+<li>password timing attacks, check everything [1,2,3,4] [5,6,7,8]</li>
+<li>requestAnimationFrame + :visited =<ul>
+<li>back to timing issue, link: 16ms, visitedLink: 60ms</li>
+</ul>
+</li>
+<li>some resources: <a href="http://youprobablyshouldusercors.thumblr.com">youprobablyshouldusercors.thumblr.com</a>, <a href="http://enable-cors.org">enable-cors.org</a></li>
+<li>use athentication when ajax</li>
+<li><span class="jqc-danger">very neat solution:</span> <a href="http://www.html5rocks.com/en/tutorials/security/content-security-policy/"><strong>Content-Security-Policy</strong></a></li>
+</ul>
+<h3 id="real-world-responsive-design-projects-and-patterns-b-a-href-https-www-dropbox-com-s-aj2dzk33nr55ccc-responsive-20jquery-20patterns-pdf-i-class-fa-fa-files-o-i-a-">Real World Responsive Design Projects and Patterns (B+) <a href="https://www.dropbox.com/s/aj2dzk33nr55ccc/Responsive%20jQuery%20Patterns.pdf"><i class="fa fa-files-o"></i></a></h3>
+<h5 id="with-catherine-farman-a-href-https-twitter-com-cfarm-i-class-fa-fa-twitter-i-a-a-href-https-github-com-cfarm-i-class-fa-fa-github-alt-i-a-a-href-mailto-cat-cfarman-com-i-class-fa-fa-envelope-o-i-a-">with Catherine Farman <a href="https://twitter.com/cfarm"><i class="fa fa-twitter"></i></a> <a href="https://github.com/cfarm"><i class="fa fa-github-alt"></i></a> <a href="mailto:cat@cfarman.com"><i class="fa fa-envelope-o"></i></a></h5>
+<h4 id="abstract">Abstract</h4>
+<blockquote>
+<p>Developing responsive websites has become a core service for web design agencies, but presents a challenge in delivering nimble, lean websites that are beautiful, usable and functional at every screen size. Through client case studies, learn real-world jQuery solutions we use at Happy Cog to solve the most common responsive design challenges.</p>
+</blockquote>
+<h4 id="my-notes">My notes</h4>
+<ul>
+<li>everything I noted is already in the slides</li>
+</ul>
+<p><br ></p>
+<h3 id="fun-with-speech-b-a-href-http-slid-es-jdimm-fun-with-speech-i-class-fa-fa-files-o-i-a-">Fun with Speech (B) <a href="http://slid.es/jdimm/fun-with-speech"><i class="fa fa-files-o"></i></a></h3>
+<h5 id="with-john-dimm-a-href-https-twitter-com-jdimm-i-class-fa-fa-twitter-i-a-a-href-https-github-com-johndimm-i-class-fa-fa-github-alt-i-a-a-href-mailto-jdimm-yahoo-com-i-class-fa-fa-envelope-o-i-a-">with John Dimm <a href="https://twitter.com/jdimm"><i class="fa fa-twitter"></i></a> <a href="https://github.com/johndimm"><i class="fa fa-github-alt"></i></a> <a href="mailto:jdimm@yahoo.com"><i class="fa fa-envelope-o"></i></a></h5>
+<h4 id="abstract">Abstract</h4>
+<blockquote>
+<p>Create hands-free interfaces using new HTML5 speech API&#39;s. We will look inside two examples. TalkShow is an exercise in ambient computing, using the Web Speech API and Named Entity Recognition -- it eavesdrops on your conversations and shows images of things you mention. The Translating Telephone is a web app for multilingual conference calls, combining the Web Speech API and Web Real Time Communicaton (WebRTC) with text-to-speech and online translation services.</p>
+</blockquote>
+<h4 id="my-notes">My notes</h4>
+<ul>
+<li>cool demos using Chrome&#39;s Web Speech API, Bing translation API, and webRTC, no tehnical knowledge</li>
+</ul>
+<p><br ></p>
+<h3 id="promises-promises-unlocking-the-power-of-jquery-s-deferreds-a-a-href-http-www-iterateme-com-blog-enclosures-jquerypromisesanddeferreds-jquerysandiego2014-pdf-i-class-fa-fa-files-o-i-a-">Promises, Promises: Unlocking the Power of jQuery&#39;s Deferreds (A-) <a href="http://www.iterateme.com/blog/enclosures/jQueryPromisesAndDeferreds-jQuerySanDiego2014.pdf"><i class="fa fa-files-o"></i></a></h3>
+<h5 id="with-brian-klaas-a-href-https-twitter-com-brian_klaas-i-class-fa-fa-twitter-i-a-a-href-https-github-com-brianklaas-i-class-fa-fa-github-alt-i-a-">with Brian Klaas <a href="https://twitter.com/brian_klaas"><i class="fa fa-twitter"></i></a> <a href="https://github.com/brianklaas"><i class="fa fa-github-alt"></i></a></h5>
+<h4 id="abstract">Abstract</h4>
+<blockquote>
+<p>Managing the order in which asynchronous callbacks in JavaScript occur can be a nasty business. Without a lot of overhead and management, you&#39;re never quite sure that a certain callback has succeeded or failed. One technique for handling this problem that has gained a lot of traction in the past year is to use deferreds and promises. In fact, if you&#39;re using jQuery 1.6 or later and making Ajax calls, you&#39;re already using deferreds and promises.</p>
+<p>In this session, we&#39;ll look at how deferreds and promises bring order to the chaos of multiple asynchronous JavaScript calls -- often known as &quot;&quot;callback hell.&quot;&quot; We&#39;ll start by understanding the problem of asynchronous work in JavaScript. The solution to this problem that jQuery provides are promises. A brief explanation of promises and deferreds will then be covered to give you a solid understanding of this key construct in JavaScript application development. We&#39;ll then look at the basics of both promises and deferreds in jQuery and then move on to see how you can leverage promises when making network requests, animating a page, loading content on the fly, waiting for long-running requests to complete, and more. Finally, we&#39;ll wrap up with a brief look at promises in other environments, like Node.js, and how promises are being integrated into the core JavaScript stack across browsers and virtual machines.</p>
+</blockquote>
+<h4 id="my-notes-not-much-as-i-am-pretty-familiar-with-deferreds">My notes - not much as I am pretty familiar with deferreds</h4>
+<ul>
+<li><code>$.ajax()</code>&#39;s <code>{success: .., error: .. }</code> are deprecated, and will be removed in the future, probably in jquery 3.0 i dont know, I doubt it&#39;s anytime soon.</li>
+<li>should use promises in animation as well, <code>$.when(fadeSomethingOut, fadeSomethingIn).then(function(){console.log(&#39;boom -done&#39;)});</code></li>
+<li>there is an html5 <code>&lt;progress&gt;</code> tag which you can use with something like <code>promise.progress()</code></li>
+</ul>
+<p><br ></p>
+<h3 id="transforming-front-end-disaster-code-into-a-maintainable-masterpiece-a-a-href-http-www-slideshare-net-dangribbin-transforming-frontend-disaster-code-i-class-fa-fa-files-o-i-a-">Transforming front-end Disaster Code™ into a Maintainable Masterpiece (A) <a href="http://www.slideshare.net/dangribbin/transforming-frontend-disaster-code"><i class="fa fa-files-o"></i></a></h3>
+<h5 id="with-dan-gribbin-a-href-https-twitter-com-dangribbin-i-class-fa-fa-twitter-i-a-a-href-mailto-dgribbin-me-com-i-class-fa-fa-envelope-o-i-a-">with Dan Gribbin <a href="https://twitter.com/dangribbin"><i class="fa fa-twitter"></i></a> <a href="mailto:dgribbin@me.com"><i class="fa fa-envelope-o"></i></a></h5>
+<h4 id="abstract">Abstract</h4>
+<blockquote>
+<p>For 5 weeks, I worked with a small team of developers to refactor the front-end of a moderately trafficked website for a ubiquitous international brand. The project’s initial launch deadlines were tight, and sacrifices were made to get the site out the door. Months down the road as features were added and changed, performance began taking a major hit, with page load times reaching 15 seconds. Some of this was attributed to poor front-end practices. Implementing new features became a somewhat of a nightmare, and morale on the team dropped. Given the opportunity to refactor and rework a portion of the site, we planned and worked for several weeks. In the end, we shaved 75% off page load times, eliminated a ton of technical debt, and set future work up for success by modularizing our code. This talk will cover some of that process. What worked for us, what didn&#39;t, how schedules and priorities between developers and clients can conflict, and how to make that better. We’ll also cover several things you can do right now to clean up your front-end code and optimize for performance.</p>
+</blockquote>
+<h4 id="my-notes">My notes</h4>
+<ul>
+<li>wait for the video, it&#39;s high level non-technical talk, but a good one. Managers should watch it too.</li>
+</ul>
+<p><br/></p>
+<h3 id="jquery-ui-behind-the-scenes-a-no-slides-">jQuery UI: Behind the Scenes (A-) (no slides)</h3>
+<h5 id="with-scott-gonzalez-a-href-https-twitter-com-scott_gonzalez-i-class-fa-fa-twitter-i-a-a-href-https-github-com-scottgonzalez-i-class-fa-fa-github-alt-i-a-a-href-mailto-scott-gonzalez-gmail-com-i-class-fa-fa-envelope-o-i-a-">with Scott Gonzalez <a href="https://twitter.com/scott_gonzalez"><i class="fa fa-twitter"></i></a> <a href="https://github.com/scottgonzalez"><i class="fa fa-github-alt"></i></a> <a href="mailto:scott.gonzalez@gmail.com"><i class="fa fa-envelope-o"></i></a></h5>
+<h4 id="abstract">Abstract</h4>
+<blockquote>
+<p>jQuery UI is more than just a collection of JavaScript widgets. It&#39;s a project that aims to discover, create, and deliver experiences that excel in usability, accessibility, and ease of implementation. Join us as we take a behind-the-scenes look at the various projects and communities that are involved in creating the world&#39;s most popular JavaScript UI library.</p>
+</blockquote>
+<h4 id="my-notes">My notes</h4>
+<ul>
+<li>wait for the video, high level non-technical talk.</li>
+<li>jquery and jquery ui team strcuture</li>
+<li>contribution process, docs, etc.</li>
+<li>talked about how jquery and polymer are working to solve pointer events on touch devices</li>
+</ul>
+<p><br/></p>
+<h3 id="javascript-and-the-new-virtual-machine-s-span-class-jqc-danger-a-span-no-slides-">JavaScript and the new Virtual Machine(s) <span class="jqc-danger">(A++)</span> (no slides)</h3>
+<h5 id="with-scott-hanselman-a-href-https-twitter-com-shanselman-i-class-fa-fa-twitter-i-a-a-href-https-github-com-shanselman-i-class-fa-fa-github-alt-i-a-a-href-mailto-scott-hanselman-com-i-class-fa-fa-envelope-o-i-a-">with Scott Hanselman <a href="https://twitter.com/shanselman"><i class="fa fa-twitter"></i></a> <a href="https://github.com/shanselman"><i class="fa fa-github-alt"></i></a> <a href="mailto:scott@hanselman.com"><i class="fa fa-envelope-o"></i></a></h5>
+<h4 id="abstract">Abstract</h4>
+<blockquote>
+<p>How does the pervasiveness of JavaScript on the client change how we architect applications? We can create hundreds virtual machines in the cloud, but we are using the millions of visual machines that visit our sites every day? Suddenly we are scripting against thousands of Virtual Machines from the command line while creating things today with JavaScript in the browser that were impossible yesterday. LiveScript becomes JavaScript becomes ES6 and now we’re compiling C++ to JavaScript. Join Scott Hanselman as he explores the relationship between the Cloud and the Browser, many Languages and one Language, how it might all fit together and what comes next.</p>
+</blockquote>
+<h4 id="my-notes">My notes</h4>
+<ul>
+<li>wait for the video, seriously, it&#39;s good</li>
+</ul>
+<p><br/></p>
+<h3 id="accessibility-is-a-feature-you-can-build-a-guided-tour-of-a11y-basics-a-a-href-http-www-slideshare-net-mpiotrowicz-accessibility-a-feature-you-can-build-i-class-fa-fa-files-o-i-a-">Accessibility is a Feature You Can Build - A Guided Tour of a11y Basics (A) <a href="http://www.slideshare.net/mpiotrowicz/accessibility-a-feature-you-can-build"><i class="fa fa-files-o"></i></a></h3>
+<h5 id="with-monika-piotrowicz-a-href-https-twitter-com-monsika-i-class-fa-fa-twitter-i-a-a-href-https-github-com-mpiotrowicz-i-class-fa-fa-github-alt-i-a-">with Monika Piotrowicz <a href="https://twitter.com/monsika"><i class="fa fa-twitter"></i></a> <a href="https://github.com/mpiotrowicz"><i class="fa fa-github-alt"></i></a></h5>
+<h4 id="abstract">Abstract</h4>
+<blockquote>
+<p>Making a website or application accessible can be an overwhelming task for a lot of developers, especially if you’re not already an expert. Looking at all the complex regulations, specs, and articles on the topic, where should we begin? In this talk, I’ll walk through some of the challenges I faced when working through accessibility requirements for the first time. I’ll cover basic considerations, how design and content fit in, testing advice, and introduce Aria practices. Attendees will leave knowing some of the practical constraints and tools that can make a big difference for users, and will have a starting point of how to make their next project more accessible. By thinking about accessibility as we would any other feature, it becomes less of a scary unknown requirement, and instead something we can plan for and implement to create a more open web for all</p>
+</blockquote>
+<h4 id="my-notes">My notes</h4>
+<ul>
+<li>use labels, for, alt, tabindex</li>
+<li>relevant aria attributes (main, banner, navigation, search, complimentary, landmark, article, tablist, combox etc.)</li>
+<li>see slides for more info and resources</li>
+</ul>
+<p><br/></p>
+<h3 id="unit-testing-a-client-server-amd-code-base-a-no-slides-demo-">Unit Testing a Client-server AMD Code Base (A) (no slides; demo)</h3>
+<h5 id="with-jason-strimpel-a-href-https-twitter-com-strimpeljason-i-class-fa-fa-twitter-i-a-a-href-https-github-com-jstrimpel-i-class-fa-fa-github-alt-i-a-a-href-mailto-jstrimpel-gmail-com-i-class-fa-fa-envelope-o-i-a-">with Jason Strimpel <a href="https://twitter.com/StrimpelJason"><i class="fa fa-twitter"></i></a> <a href="https://github.com/jstrimpel"><i class="fa fa-github-alt"></i></a> <a href="mailto:jstrimpel@gmail.com"><i class="fa fa-envelope-o"></i></a></h5>
+<h4 id="abstract">Abstract</h4>
+<blockquote>
+<p>Unit testing is never easy, but it is a necessary evil in software development. Unit testing an AMD code base is even more difficult. A few questions that quickly arise are – How do I mock dependencies? How do I ensure my paths have been configured? How do I generate coverage reports? This talk will answer all these questions and much more.</p>
+</blockquote>
+<h4 id="my-notes">My notes</h4>
+<ul>
+<li>walmartlabs built <code>grunt-castle</code>, a <code>grunt</code> plugin, pretty nice tool to absctract all the unit testing from a-z in a single place, with browser and server testing, it&#39;s not open source yet, but will be in the upcoming weeks.</li>
+</ul>
+<p><br/></p>
+<h3 id="globalize-cldr-a-no-slides-yet-">Globalize ♥ CLDR (A-) (no slides; yet)</h3>
+<h5 id="with-rafael-xavier-a-href-https-twitter-com-rxaviers-i-class-fa-fa-twitter-i-a-a-href-https-github-com-rxaviers-i-class-fa-fa-github-alt-i-a-a-href-mailto-jstrimpel-gmail-com-i-class-fa-fa-envelope-o-i-a-">with Rafael Xavier <a href="https://twitter.com/rxaviers"><i class="fa fa-twitter"></i></a> <a href="https://github.com/rxaviers"><i class="fa fa-github-alt"></i></a> <a href="mailto:jstrimpel@gmail.com"><i class="fa fa-envelope-o"></i></a></h5>
+<h4 id="abstract">Abstract</h4>
+<blockquote>
+<p>Internationalization is the process that provides users with a localized experience that matches their own cultural and linguistic expectations. Learn how jQuery is improving its Globalize project to leverage the official CLDR JSON data, allow users to load as much or as little data as they need, avoid duplicating data if using multiple i18n libraries that leverage CLDR, and that run in browsers or node.js.</p>
+</blockquote>
+<h4 id="my-notes">My notes</h4>
+<ul>
+<li><a href="https://github.com/rxaviers/cldr">https://github.com/rxaviers/cldr</a></li>
+<li><a href="https://github.com/jquery/globalize">https://github.com/jquery/globalize</a></li>
+<li><a href="http://unicode.org">unicode.org</a></li>
+</ul>
+<p><br/></p>
+<h3 id="jquery-now-ideal-for-low-bandwidth-a-no-slides-yet-">jQuery: Now Ideal For Low Bandwidth (A) (no slides; yet)</h3>
+<h5 id="with-timmy-willison-a-href-https-twitter-com-timmywil-i-class-fa-fa-twitter-i-a-a-href-https-github-com-timmywil-i-class-fa-fa-github-alt-i-a-">with Timmy Willison <a href="https://twitter.com/timmywil"><i class="fa fa-twitter"></i></a> <a href="https://github.com/timmywil"><i class="fa fa-github-alt"></i></a></h5>
+<h4 id="abstract">Abstract</h4>
+<blockquote>
+<p>Prolonged load times can avert users from your beautiful site off to those other ghastly but fast-loading contrivances. Even if your site renders like a wildebeest escaping its hunter on your souped-up Mackbook Pro, the size of your dependencies can still be a concern for other devices on slower networks. This very concern has led to the fabrication of tiny javascript libraries which are slender phantoms of the amply-tested. And many third-party libraries require jQuery unnecessarily and have yet to realise they have the potential to slim down their dependencies. We&#39;ll talk about the recent changes to the jQuery source and how you can personalise jQuery to fit into that dress</p>
+</blockquote>
+<h4 id="my-notes">My notes</h4>
+<ul>
+<li>pretty much now you can choose module to skip, or specifically include in your custom jquery build</li>
+</ul>
+<pre><code># examples
+
+# ajax is the larges module, if you don&#39;t use it, leave it out
+grunt custom:-ajax
+
+# take out the effect module, use css, take out depracated stuff, and queue, do you even use the queue ?
+grunt custom:-effect,-deprecated,-queue
+
+grunt custom:*:deferred
+grunt build:*:attributes/classes</code></pre>
+<ul>
+<li>interesting peice of info:<pre><code>jQuery Version | Size (minified, gziped)
+1.4.4          |    27.1kb
+1.5.2          |    29.9kb
+1.7.2          |    33.6kb
+1.9.1          |    32.8kb
+1.10.2         |    32.8kb
+1.11.0         |    33.3kb
+2.1.0          |    29.3kb</code></pre>
+</li>
+</ul>
+<p><br/></p>
+<h3 id="js-legos-reusable-ui-patterns-in-javascript-a-a-href-http-tybenz-com-presentation-js-legos-i-class-fa-fa-files-o-i-a-">JS Legos: Reusable UI Patterns in JavaScript (A) <a href="http://tybenz.com/presentation-js-legos/#/"><i class="fa fa-files-o"></i></a></h3>
+<h5 id="with-tyler-benziger-a-href-https-twitter-com-tybenz-i-class-fa-fa-twitter-i-a-a-href-https-github-com-tybenz-i-class-fa-fa-github-alt-i-a-">with Tyler Benziger <a href="https://twitter.com/tybenz"><i class="fa fa-twitter"></i></a> <a href="https://github.com/tybenz"><i class="fa fa-github-alt"></i></a></h5>
+<h4 id="abstract">Abstract</h4>
+<blockquote>
+<p>This talk will cover how to effectively organize and compose UI components in JavaScript, HTML, and CSS, as well as give an overview of identifying UI patterns. We&#39;ll cover some common UI components and identify similarities between them. This sheds light on the construction of these components and how to effectively decouple code so that it can be reused effectively across projects.</p>
+<p>With a solid understanding of UI patterns, and best-practices for reusable code, rolling your own UI components is awesome and enjoyable. And for those who don&#39;t have to time to write a component framework from the ground-up this talk will give an excellent outline of what to look for in 3rd party components.</p>
+</blockquote>
+<h4 id="my-notes">My notes</h4>
+<ul>
+<li>good talk, watch the video</li>
+<li>neat, modular UI component built by Adobe, but too bad it&#39;s not open sourced :/</li>
+</ul>
+<p><br/></p>
+<h3 id="mobile-web-compatibility-on-the-world-wide-web-a-a-href-https-miketaylr-com-pres-jquery-sd-i-class-fa-fa-files-o-i-a-">Mobile Web Compatibility on the World Wide Web (A) <a href="https://miketaylr.com/pres/jquery-sd/"><i class="fa fa-files-o"></i></a></h3>
+<h5 id="with-mike-taylor-a-href-https-twitter-com-miketaylr-i-class-fa-fa-twitter-i-a-a-href-hhttps-github-com-miketaylr-i-class-fa-fa-github-alt-i-a-a-href-mailto-miket-mozilla-com-i-class-fa-fa-envelope-o-i-a-">with Mike Taylor <a href="https://twitter.com/miketaylr"><i class="fa fa-twitter"></i></a> <a href="hhttps://github.com/miketaylr"><i class="fa fa-github-alt"></i></a>  <a href="mailto:miket@mozilla.com"><i class="fa fa-envelope-o"></i></a></h5>
+<h4 id="abstract">Abstract</h4>
+<blockquote>
+<p>In this talk we&#39;ll take a look at just how messed up the world wide web can be, ranging from broken web browsers to broken web servers and everything in between. We&#39;ll also look at how jQuery (and jQuery Mobile) APIs, often working around these various busted components, have helped to shape the future of a more compatible web. Come prepared to hear some battle tales and learn some low-level details about the web stack works, despite being so broken.</p>
+</blockquote>
+<h4 id="my-notes">My notes</h4>
+<ul>
+<li>good talk, but what intrested me the most was why <strong>you still need jquery</strong>; <a href="https://etherpad.mozilla.org/jquery-browser-bug-analysis">that&#39;s a list</a> of a lot of the bug jquery works around for us, despite that all the Modern browsers are matching standards, or trying to, along with, still, injecting their own behaviors, rules and apis</li>
+</ul>
+<h2 id="for-the-rest-of-the-talks">For the rest of the talks</h2>
+<p>see <a href="http://events.jquery.org/2014/san-diego/">http://events.jquery.org/2014/san-diego/</a></p>
+
+</div>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script>
+    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src='//www.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+</body>
+</html>

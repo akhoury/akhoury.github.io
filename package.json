@@ -1,0 +1,23 @@
+{
+  "name": "akhoury.github.io",
+  "version": "0.0.0",
+  "description": "",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akhoury/akhoury.github.io.git"
+  },
+  "author": "akhoury <bentael@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/akhoury/akhoury.github.io/issues"
+  },
+  "homepage": "https://github.com/akhoury/akhoury.github.io",
+  "devDependencies": {
+	"grunt": "*",
+	"grunt-markdown": "*"
+  }
+}

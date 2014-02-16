@@ -1,18 +1,3 @@
-<head>
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    <style>
-        i.fa {
-            font-size: 20px
-        }
-        .jqc-danger {
-            color: red;
-        }
-        .jqc-warning {
-            color: orange;
-        }
-    </style>
-</head>
-
 # jQuery Conference 2014
 [@jqcon](http://twitter.com/jqcon)
 
@@ -168,7 +153,7 @@ $('.btn').click(() => {
 ##### with John Dimm <a href="https://twitter.com/jdimm"><i class="fa fa-twitter"></i></a> <a href="https://github.com/johndimm"><i class="fa fa-github-alt"></i></a> <a href="mailto:jdimm@yahoo.com"><i class="fa fa-envelope-o"></i></a>
 
 #### Abstract
-> Developing responsive websites has become a core service for web design agencies, but presents a challenge in delivering nimble, lean websites that are beautiful, usable and functional at every screen size. Through client case studies, learn real-world jQuery solutions we use at Happy Cog to solve the most common responsive design challenges.
+> Create hands-free interfaces using new HTML5 speech API's. We will look inside two examples. TalkShow is an exercise in ambient computing, using the Web Speech API and Named Entity Recognition -- it eavesdrops on your conversations and shows images of things you mention. The Translating Telephone is a web app for multilingual conference calls, combining the Web Speech API and Web Real Time Communicaton (WebRTC) with text-to-speech and online translation services.
 
 #### My notes
 
@@ -219,9 +204,9 @@ $('.btn').click(() => {
 <br/>
 
 ### JavaScript and the new Virtual Machine(s) <span class="jqc-danger">(A++)</span> (no slides)
-##### with Scott Gonzalez <a href="https://twitter.com/shanselman"><i class="fa fa-twitter"></i></a> <a href="https://github.com/shanselman"><i class="fa fa-github-alt"></i></a> <a href="mailto:scott@hanselman.com"><i class="fa fa-envelope-o"></i></a>
+##### with Scott Hanselman <a href="https://twitter.com/shanselman"><i class="fa fa-twitter"></i></a> <a href="https://github.com/shanselman"><i class="fa fa-github-alt"></i></a> <a href="mailto:scott@hanselman.com"><i class="fa fa-envelope-o"></i></a>
 #### Abstract
-> jQuery UI is more than just a collection of JavaScript widgets. It's a project that aims to discover, create, and deliver experiences that excel in usability, accessibility, and ease of implementation. Join us as we take a behind-the-scenes look at the various projects and communities that are involved in creating the world's most popular JavaScript UI library.
+> How does the pervasiveness of JavaScript on the client change how we architect applications? We can create hundreds virtual machines in the cloud, but we are using the millions of visual machines that visit our sites every day? Suddenly we are scripting against thousands of Virtual Machines from the command line while creating things today with JavaScript in the browser that were impossible yesterday. LiveScript becomes JavaScript becomes ES6 and now we’re compiling C++ to JavaScript. Join Scott Hanselman as he explores the relationship between the Cloud and the Browser, many Languages and one Language, how it might all fit together and what comes next.
 
 #### My notes
 
@@ -233,7 +218,7 @@ $('.btn').click(() => {
 ##### with Monika Piotrowicz <a href="https://twitter.com/monsika"><i class="fa fa-twitter"></i></a> <a href="https://github.com/mpiotrowicz"><i class="fa fa-github-alt"></i></a>
 
 #### Abstract
-> jQuery UI is more than just a collection of JavaScript widgets. It's a project that aims to discover, create, and deliver experiences that excel in usability, accessibility, and ease of implementation. Join us as we take a behind-the-scenes look at the various projects and communities that are involved in creating the world's most popular JavaScript UI library.
+> Making a website or application accessible can be an overwhelming task for a lot of developers, especially if you’re not already an expert. Looking at all the complex regulations, specs, and articles on the topic, where should we begin? In this talk, I’ll walk through some of the challenges I faced when working through accessibility requirements for the first time. I’ll cover basic considerations, how design and content fit in, testing advice, and introduce Aria practices. Attendees will leave knowing some of the practical constraints and tools that can make a big difference for users, and will have a starting point of how to make their next project more accessible. By thinking about accessibility as we would any other feature, it becomes less of a scary unknown requirement, and instead something we can plan for and implement to create a more open web for all
 
 #### My notes
 
@@ -326,9 +311,7 @@ jQuery Version | Size (minified, gziped)
 ##### with Mike Taylor <a href="https://twitter.com/miketaylr"><i class="fa fa-twitter"></i></a> <a href="hhttps://github.com/miketaylr"><i class="fa fa-github-alt"></i></a>  <a href="mailto:miket@mozilla.com"><i class="fa fa-envelope-o"></i></a>
 
 #### Abstract
-> This talk will cover how to effectively organize and compose UI components in JavaScript, HTML, and CSS, as well as give an overview of identifying UI patterns. We'll cover some common UI components and identify similarities between them. This sheds light on the construction of these components and how to effectively decouple code so that it can be reused effectively across projects.
-
-> With a solid understanding of UI patterns, and best-practices for reusable code, rolling your own UI components is awesome and enjoyable. And for those who don't have to time to write a component framework from the ground-up this talk will give an excellent outline of what to look for in 3rd party components.
+> In this talk we'll take a look at just how messed up the world wide web can be, ranging from broken web browsers to broken web servers and everything in between. We'll also look at how jQuery (and jQuery Mobile) APIs, often working around these various busted components, have helped to shape the future of a more compatible web. Come prepared to hear some battle tales and learn some low-level details about the web stack works, despite being so broken.
 
 #### My notes
 
