@@ -1,0 +1,83 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+.mbo-app {
+    margin-top: 20px;
+}
+.tab-pane {
+    padding: 10px;
+}
+#email-template div.preview {
+    border: 1px solid black;
+    padding: 10px;
+}
+#editorCSV,
+#email-template div.html {
+    overflow: auto;
+    position: relative;
+    width: 100%;
+    height: 400px;
+}
+#editorCSV {
+    height: 200px;
+}
+#email-template div.html,
+#email-template div.preview {
+    width: 100%;
+}
+.nav-controls {
+    margin-top: 10px;
+}
+.overflow-hidden {
+    overflow: hidden;
+}
+.soft-border {
+    border: 1px solid #cbcbcb;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.csvInput-group {
+    padding: 10px;
+}
+iframe {
+    width: 100%;
+    min-height: 500px;
+}
+.alert {
+    width: 100%;
+    display: block;
+    padding: 10px;
+    text-align: center;
+    color: black;
+    background-color: #dfddd6;
+    overflow: hidden;
+}
+.alert.error {
+    background-color: #ff9595;
+}
+.alert.info {
+    background-color: #b2d8ff;
+}
+.alert.success {
+    background-color: #b9ffc1;
+}
+.alert.warn {
+    background-color: #ffba7b;
+}
+#blast-results {
+    margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+

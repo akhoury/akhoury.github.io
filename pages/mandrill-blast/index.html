@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Mandrill blast</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <!--[if lt IE 9]>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/2.3.0/es5-shim.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
+        <![endif]-->
+
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Howdy, Stranger!</h1>
+        <p>This is a quick app so you can use Mandrill's API to blast a bunch of emails to a bunch of people</p>
+        <p>
+            <a data-action="start" class="btn btn-success btn-lg">Aha, that's what I wanted</a>
+            <a data-action="gtfo" class="btn btn-default btn-lg">No thanks</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="container mbo-app hide">
+      <div class="row">
+          <form class="mbo-form">
+                <ul class="nav nav-pills">
+                    <li class="active"><a href="#mandrill-data" data-toggle="tab">Data</a></li>
+                    <li><a href="#email-template" data-toggle="tab">Email Template</a></li>
+                    <li><a href="#blast" data-toggle="tab">Blast</a></li>
+                </ul>
+                <div class="tab-content">
+
+                    <div id="mandrill-data" class="tab-pane active col-lg-12 mbo-data-setup">
+                        <div class="form-group">
+                            <label for="mandrillApiKey">Mandrill API Key [REQUIRED]</label>
+                            <input type="text" class="form-control" id="mandrillApiKey" placeholder="Enter API Key" value="">
+                            <p class="help-block">Get your API key from <a target="_blank" href="http://mandrill.com">Mandrill.com</a></p>
+                        </div>
+
+                        <div class="form-group soft-border csvInput-group">
+                            <div class="radio-inline">
+                                <label>
+                                    <input data-action="csvToggle" type="radio" name="csvInput" id="csvTextRadio" value="editorCSV" checked>
+                                    Paste your CSV text
+                                </label>
+                            </div>
+                            <div class="radio-inline">
+                                <label>
+                                    <input data-action="csvToggle" type="radio" name="csvInput" id="csvFileRadio" value="csvFile" disabled="true">
+                                    Upload your CSV file <span class="text-muted">(temporarily disabled)</span>
+                                </label>
+                            </div>
+
+                            <div class="form-group csvInput">
+                                <label for="editorCSV">CSV Text Input [REQUIRED]</label>
+                                <div id="editorCSV"></div>
+                                <p class="help-block">paste your CSV text, make sure the column headers are in there</p>
+                            </div>
+                            <div class="form-group csvInput hidden">
+                                <label for="csvFile">CSV File</label>
+                                <input type="file" id="csvFile">
+                                <p class="help-block">upload a CSV file, make sure the column headers are in there</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="emailSubject">Email Subject [REQUIRED]</label>
+                            <input type="text" class="form-control" id="emailSubject" placeholder="Hello {{NAME}}" value="">
+                            <p class="help-block">You can use templating here as long as there is a CSV field of it </p>
+                        </div>
+                        <div class="form-group">
+                            <label for="emailFromAddress">From Email [REQUIRED]</label>
+                            <input type="email" class="form-control" id="emailFromAddress" placeholder="ihavemillions@foryou.com" value="">
+                            <p class="help-block">Which email you want the emails to be sent from </p>
+                        </div>
+                        <div class="form-group">
+                            <label for="emailFromName">From Name [REQUIRED]</label>
+                            <input type="text" class="form-control" id="emailFromName" placeholder="Nigerian Prince" value="">
+                            <p class="help-block">Which name you want the emails to be sent from </p>
+                        </div>
+                        <div class="form-group">
+                            <label for="emailToAddressColumn">Receivers' 'Email address' CSV field name [REQUIRED]</label>
+                            <input type="text" class="form-control" id="emailToAddressColumn" placeholder="email" value="">
+                            <p class="help-block">What is the email column called, for each record, default is email, and it's case sensitive</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="emailToNameColumn">Receivers' 'Name' CSV field name</label>
+                            <input type="text" class="form-control" id="emailToNameColumn" placeholder="name" value="">
+                            <p class="help-block">What is the name column called, if you have one, and it's case sensitive</p>
+                        </div>
+
+                    </div>
+
+                    <div id="email-template" class="tab-pane col-lg-12 mbo-html-setup overflow-hidden">
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mbo-html">
+                            <h2>Email HTML, Edit/Paste yours here</h2>
+                            <div id="editorHTML" class="form-control html"></div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mbo-preview">
+                            <h2>Preview, using the first CSV row</h2>
+                            <div class="preview"></div>
+                        </div>
+                    </div>
+
+                   <div id="blast" class="tab-pane col-lg-12 mbo-run-results">
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mbo-logs">
+                            <h2>Summary</h2>
+                            <p><span id="rows-count"></span> CSV rows detected</p>
+                            <button data-action="blast" class="btn btn-default">Blast Now!</button>
+                            <div id="blast-results"></div>
+                        </div>
+                    </div>
+                </div>
+           </form>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; nope - but <a blank="_blank" href="http://github.com/akhoury"><i class="fa fa-github-alt"></i></a></p>
+      </footer>
+    </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/mode-html.js"></script>
+        <script src="js/csv.js"></script>
+        <script src="js/mandrill.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
