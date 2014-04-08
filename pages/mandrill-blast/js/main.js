@@ -1,4 +1,7 @@
 $(function() {
+
+    CSV.DETECT_TYPES = false;
+
     var dispatcher = $('<i/>'),
         htmlEditor,
         csvEditor,
@@ -72,7 +75,6 @@ $(function() {
                 iframe[0].contentWindow.document.write(html);
                 iframe[0].contentWindow.document.close();
                 dispatcher.trigger('html:update');
-                // iframe.css({width: $('.preview').width()});
             } catch (e) {
                 console.warn(e);
             }
@@ -92,10 +94,11 @@ $(function() {
                         });
                         data.push(_row);
                     });
+                    $('.csv-alert').removeClass('error').empty();
                     dispatcher.trigger('csv:update');
                 }
             } catch (e) {
-                console.warn(e);
+                $('.csv-alert').addClass('error').html('CSV ERROR:' + e);
             }
         },
 
@@ -154,7 +157,8 @@ $(function() {
             blast: function(e) {
                 e.preventDefault();
 
-                var btn = $(e.target),
+                var count = 0,
+                    btn = $(e.target),
                     apiKey = $('#mandrillApiKey').val(),
                     subjectStr = $('#emailSubject').val(),
                     from_email = $('#emailFromAddress').val(),
@@ -190,11 +194,13 @@ $(function() {
                                 async: true
                             },
                             success = function(response) {
-                                resultsEl.append('<div class="alert success">' + JSON.stringify(response) + '</div>');
+                                resultsEl.prepend('<div class="alert success">' + JSON.stringify(response) + '</div>');
                                 deferred.resolve();
+                                var percentage = (++count/data.length*100).toFixed(1);
+                                btn.text('Blasting now... hang tight (' + count + '/' + data.length + ' -- ' + percentage + '%)');
                             },
                             error = function(response) {
-                                resultsEl.append('<div class="alert error">' + JSON.stringify(response) + '</div>');
+                                resultsEl.prepend('<div class="alert error">' + JSON.stringify(response) + '</div>');
                                 deferred.reject();
                             };
 
@@ -205,7 +211,10 @@ $(function() {
                     $.when.apply($, deferreds).always(function() {
                         resultsEl.prepend('<div class="alert info">All Emails were queued up! Now track the delivery reports on your <a href="http://mandrill.com">mandrill.com</a> account.</div>');
                         btn.prop('disabled', false);
-                        btn.text('Blast Now!');
+
+                        setTimeout(function() {
+                            btn.text('Blast Now!');
+                        }, 1000);
                     })
                 } else {
                     var arr = ['Mandrill Api Key', 'Subject', 'From Email', 'From Name', 'To Email Column'],
@@ -227,6 +236,7 @@ $(function() {
             $('#editorCSV').on('paste keypress keyup keydown', parseCSV);
             dispatcher.on('csv:update', function(e) {
                 $('#rows-count').text(data.length);
+                preview();
             });
         };
 

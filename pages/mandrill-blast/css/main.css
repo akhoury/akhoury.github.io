@@ -48,7 +48,8 @@ iframe {
 .alert {
     width: 100%;
     display: block;
-    padding: 10px;
+    padding: 0;
+    border: none;
     text-align: center;
     color: black;
     background-color: #dfddd6;
