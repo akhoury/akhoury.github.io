@@ -2,12 +2,17 @@ $(function() {
 
     CSV.DETECT_TYPES = false;
 
-    var dispatcher = $('<i/>'),
+    var
+        STORAGE_KEY = 'akhoury/mandrill-blast',
+        STORAGE_TTL = 52 * 7 * 24 * 60 * 60 * 1000, // 1 year
+        dispatcher = $('<i/>'),
         htmlEditor,
         csvEditor,
         rows = [],
         data = [],
+
         template = function () {},
+
         defaultCSV = ''
             + 'EMAIL,NAME,AMOUNT,CONFIRMATION\n'
             + 'josh@example.com,Josh,180 Million,1234567890\n'
@@ -47,6 +52,43 @@ $(function() {
         appEl = $('.mbo-app'),
         formEl = $('.mbo-form'),
         jumbotronEl = $('.jumbotron'),
+
+        saveConfig = function() {
+            // todo
+        },
+
+        gatherConfig = function() {
+            var config = {
+                // todo
+            };
+
+            return config;
+        },
+
+        populateConfig = function(config) {
+            Object.keys(config).forEach(function(key) {
+                var value = config[key];
+            });
+        },
+
+        getStorage = function() {
+            if (window.localStorage) {
+                var config = localStorage.getItem(STORAGE_KEY + '-config'),
+                    ttl = localStorage.getItem(STORAGE_KEY + '-ttl'),
+                    expired = !ttl || isNaN(ttl) || ttl < (new Date()).getTime();
+
+                if (!expired && (function() { try {config = JSON.parse(config); return true; } catch(e) { return false; } })() ) {
+                    return config;
+                }
+            }
+        },
+
+        setStorage = function(config) {
+            if(window.localStorage) {
+                localStorage.setItem(STORAGE_KEY + '-config', JSON.stringify(config));
+                localStorage.setItem(STORAGE_KEY + '-ttl', new Date().getTime() + STORAGE_TTL);
+            }
+        },
 
         whichIsFalsy = function(arr) {
             for (var i = 0; i < arr.length; i++) {
@@ -209,7 +251,12 @@ $(function() {
                     });
 
                     $.when.apply($, deferreds).always(function() {
-                        resultsEl.prepend('<div class="alert info">All Emails were queued up! Now track the delivery reports on your <a href="http://mandrill.com">mandrill.com</a> account.</div>');
+
+                        resultsEl.prepend( ''
+                            + '<div class="alert info">'
+                            + 'All Emails were queued up! Now track the delivery reports on your <a href="http://mandrill.com">mandrill.com</a> account.'
+                            + '</div>');
+
                         btn.prop('disabled', false);
 
                         setTimeout(function() {
@@ -242,10 +289,12 @@ $(function() {
 
     attachActions();
     csvEditor = ace.edit('editorCSV');
-    csvEditor.getSession().setValue(defaultCSV);
     htmlEditor = ace.edit('editorHTML');
     htmlEditor.getSession().setMode('ace/mode/html');
+
     htmlEditor.getSession().setValue(defaultHTML);
+    csvEditor.getSession().setValue(defaultCSV);
+
     parseCSV();
     preview();
 });
