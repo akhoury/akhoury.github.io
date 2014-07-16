@@ -126,7 +126,10 @@
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mbo-logs">
                             <h2>Summary</h2>
                             <p><span id="rows-count"></span> CSV rows detected</p>
-                            <button data-action="blast" class="btn btn-default">Blast Now!</button>
+                            <div class="overflow-hidden">
+                                <button data-action="blast" class="btn btn-default pull-left">Blast Now!</button>
+                                <button data-action="clearStorage" class="btn btn-warning pull-right">Clear Local Storage</button>
+                            </div>
                             <div id="blast-results"></div>
                         </div>
                     </div>

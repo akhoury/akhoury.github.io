@@ -6,14 +6,16 @@ $(function() {
         STORAGE_KEY = 'akhoury/mandrill-blast',
         STORAGE_TTL = 52 * 7 * 24 * 60 * 60 * 1000, // 1 year
         dispatcher = $('<i/>'),
-        htmlEditor,
-        csvEditor,
+        editors = {
+			'editorCSV': null,
+			'editorHTML': null
+		},
         rows = [],
         data = [],
 
-        template = function () {},
+		persistTimeout,
 
-        defaultCSV = ''
+		defaultCSV = ''
             + 'EMAIL,NAME,AMOUNT,CONFIRMATION\n'
             + 'josh@example.com,Josh,180 Million,1234567890\n'
             + 'jen@example.com,Jen,150000,0987654321',
@@ -53,24 +55,6 @@ $(function() {
         formEl = $('.mbo-form'),
         jumbotronEl = $('.jumbotron'),
 
-        saveConfig = function() {
-            // todo
-        },
-
-        gatherConfig = function() {
-            var config = {
-                // todo
-            };
-
-            return config;
-        },
-
-        populateConfig = function(config) {
-            Object.keys(config).forEach(function(key) {
-                var value = config[key];
-            });
-        },
-
         getStorage = function() {
             if (window.localStorage) {
                 var config = localStorage.getItem(STORAGE_KEY + '-config'),
@@ -102,6 +86,7 @@ $(function() {
             var btn = $(e.target),
                 action = btn.attr('data-action');
 
+			throttledPersist();
             return actions[action](e);
         },
 
@@ -110,13 +95,15 @@ $(function() {
                 iframe = $('<iframe/>');
 
             try {
-                template = Handlebars.compile(htmlEditor.getSession().getValue());
+                template = Handlebars.compile(editors.editorHTML.getSession().getValue());
                 html = template(data[0]);
                 $('div.preview').empty().append(iframe);
                 iframe[0].contentWindow.document.open();
                 iframe[0].contentWindow.document.write(html);
                 iframe[0].contentWindow.document.close();
                 dispatcher.trigger('html:update');
+
+				throttledPersist();
             } catch (e) {
                 console.warn(e);
             }
@@ -124,7 +111,7 @@ $(function() {
 
         parseCSV = function() {
             try {
-                rows = CSV.parse(csvEditor.getSession().getValue());
+                rows = CSV.parse(editors.editorCSV.getSession().getValue());
                 data = [];
                 if (rows && Array.isArray(rows[0])) {
                     var keys = rows[0];
@@ -138,7 +125,9 @@ $(function() {
                     });
                     $('.csv-alert').removeClass('error').empty();
                     dispatcher.trigger('csv:update');
-                }
+
+					throttledPersist();
+				}
             } catch (e) {
                 $('.csv-alert').addClass('error').html('CSV ERROR:' + e);
             }
@@ -254,7 +243,8 @@ $(function() {
 
                         resultsEl.prepend( ''
                             + '<div class="alert info">'
-                            + 'All Emails were queued up! Now track the delivery reports on your <a href="http://mandrill.com">mandrill.com</a> account.'
+                            + '<p>All Emails were queued up! Now track the delivery reports on your <a href="http://mandrill.com">mandrill.com</a> account.</p>'
+							+ '<p>I intentionally reset the emails list so you don\'t accidentally resend but persisted your other info, which you can clear using the clear button on the right.</p>'
                             + '</div>');
 
                         btn.prop('disabled', false);
@@ -274,7 +264,12 @@ $(function() {
                                     'Something went wrong :( -- file an issue <a href="https://github.com/akhoury/akhoury.github.io/issues" target="_blank">here</a>') + '</div>');
                 }
                 return false;
-            }
+            },
+
+			clearStorage: function() {
+				localStorage.clear();
+				location.reload(true);
+			}
         },
 
         attachActions = function(){
@@ -285,16 +280,91 @@ $(function() {
                 $('#rows-count').text(data.length);
                 preview();
             });
-        };
+		},
 
-    attachActions();
-    csvEditor = ace.edit('editorCSV');
-    htmlEditor = ace.edit('editorHTML');
-    htmlEditor.getSession().setMode('ace/mode/html');
+		nodeValue = function(selector, value) {
+			var getter, setter,
+				tag = $(selector),
+				tagName = tag.prop('tagName').toLowerCase();
 
-    htmlEditor.getSession().setValue(defaultHTML);
-    csvEditor.getSession().setValue(defaultCSV);
+				if ( (tagName === 'input' && tag.attr('type') !== 'file') || tagName === 'textarea') {
+					getter = function() {
+						return tag.val();
+					};
+					setter = function(value) {
+						tag.val(value);
+					};
+				} else if (tag.hasClass('ace_editor')) {
+					getter = function() {
+						return editors[tag.attr('id')].getSession().getValue();
+					};
+					setter = function(value) {
+						editors[tag.attr('id')].getSession().setValue(value);
+					};
+				} else {
+					//todo add RADIO buttons support when I enable the client-site upload
+					getter = function() {
+						return tag.html();
+					};
+					setter = function(value) {
+						tag.html(value);
+					};
+				}
 
-    parseCSV();
-    preview();
+			if (value !== undefined) {
+				setter(value);
+			}
+
+			return getter();
+		},
+
+		persist = function() {
+			var inputs = $('input, .ace_editor');
+			var config = {};
+			inputs.each(function(i, input) {
+				var key = $(input).attr('id');
+				var value = nodeValue(input);
+				config[key] = value;
+			});
+
+			// dont store the emails
+			delete config.editorCSV;
+
+			setStorage(config);
+		},
+
+		throttledPersist = function(timeout) {
+			clearTimeout(persistTimeout);
+
+			persistTimeout = setTimeout(function() {
+				persist();
+			}, timeout || 1000);
+		},
+
+		init = function() {
+			attachActions();
+			editors.editorCSV = ace.edit('editorCSV');
+			editors.editorHTML = ace.edit('editorHTML');
+			editors.editorHTML.getSession().setMode('ace/mode/html');
+
+			editors.editorHTML.getSession().setValue(defaultHTML);
+			editors.editorCSV.getSession().setValue(defaultCSV);
+
+			var storage = getStorage();
+			if (storage) {
+
+				if (storage.mandrillApiKey) {
+					actions.start();
+				}
+
+				Object.keys(storage).forEach(function(id, value) {
+					nodeValue('#' + id, storage[id]);
+				});
+			}
+
+			parseCSV();
+			preview();
+		};
+
+	init();
 });
