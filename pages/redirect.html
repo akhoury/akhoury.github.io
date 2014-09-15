@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>redirect</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    function param(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+        return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    var href = param('href');
+
+    if (href) {
+        window.location.href = href;
+
+    } else {
+        window.close();
+        // in case we couldn't close window.
+        setTimeout(function(){ 
+            var p = document.createElement('p');
+            p.innerHTML = "You can safely close this page";
+            document.body.appendChild(p);
+        }, 500);
+    }
+</script>
+</body>
+</html>
