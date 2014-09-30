@@ -13,7 +13,7 @@
   <!--  Sorry, video isn't supported-->
   <!--</video>-->
   
-  <div id="myvid" style="background: red; width: 300px; height: 300px;cursor:pointer;"></div>
+  <div id="myel" style="background: red; width: 300px; height: 300px;cursor:pointer;"></div>
   
   <br/>
   <button id="clearLog">clear log</button>
@@ -24,7 +24,7 @@
       $("#log").empty();
     });
     
-    $("#myvid").click(function() {
+    $("#myel").click(function() {
       isFullscreen() ? exitFullscreen() : enterFullScreen(this);
     });
     
@@ -75,11 +75,11 @@
     var onFullscreenChange = function() {
         if (isFullscreen()) {
           setTimeout(function() {
-            top.v = document.getElementById("myvid");
-            log("iFramed:" + iFramed() + ", isFullscreen:true, video.width=" + top.v.offsetWidth);
+            top.myel = document.getElementById("myel");
+            log("iFramed:" + iFramed() + ", isFullscreen:true, el.width=" + top.v.offsetWidth);
           }, 3000);
         } else {
-          log("iFramed:" + iFramed() + ", isFullscreen:false, video.width=" + $("video").width());     
+          log("iFramed:" + iFramed() + ", isFullscreen:false, el.width=" + $(top.myel).width());     
         }
     };
     
