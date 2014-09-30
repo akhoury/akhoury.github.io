@@ -66,6 +66,7 @@
     
     var onFullscreenChange = function() {
         if (isFullscreen()) {
+          debugger;
           log("iFramed:" + iFramed() + ", isFullscreen:true, video.width=" + $("video").width());    
         } else {
           log("iFramed:" + iFramed() + ", isFullscreen:false, video.width=" + $("video").width());     
