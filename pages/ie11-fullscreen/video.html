@@ -6,20 +6,18 @@
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
-  <h1>test</h1>
-  <!--<video id="myvid" class="fullScreen" controls="controls" width="300">-->
-  <!--  <source src="http://samples.msdn.microsoft.com/Workshop/samples/media/fullscreen/demo.mp4" type="video/mp4" />-->
-  <!--  <source src="http://samples.msdn.microsoft.com/Workshop/samples/media/fullscreen/demo.ogv" type="video/ogg" />-->
-  <!--  Sorry, video isn't supported-->
-  <!--</video>-->
+  <h1>test.</h1>
   
-  <div id="myel" style="background: red; width: 300px; height: 300px;cursor:pointer;"></div>
+  <div id="myel" style="background: red; width: 432px; height: 300px;cursor:pointer;"></div>
   
   <br/>
   <button id="clearLog">clear log</button>
   <div id="log"></div>
   
   <script>
+    // to be able to access the myel from the top window
+    var myel = top.myel = document.getElementById("myel");
+    
     $("#clearLog").click(function() {
       $("#log").empty();
     });
@@ -71,13 +69,15 @@
       } 
       inFullScreen = false;
     }
-    
+
     var onFullscreenChange = function() {
         if (isFullscreen()) {
+          
+          // just in case we're measuring too quickly?
           setTimeout(function() {
-            top.myel = document.getElementById("myel");
-            log("iFramed:" + iFramed() + ", isFullscreen:true, el.width=" + top.myel.offsetWidth);
-          }, 3000);
+            log("iFramed:" + iFramed() + ", isFullscreen:true, el.width=" + $(top.myel).width());
+          }, 1000);
+          
         } else {
           log("iFramed:" + iFramed() + ", isFullscreen:false, el.width=" + $(top.myel).width());     
         }
