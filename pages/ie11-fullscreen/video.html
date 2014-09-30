@@ -66,8 +66,9 @@
     
     var onFullscreenChange = function() {
         if (isFullscreen()) {
-          debugger;
-          log("iFramed:" + iFramed() + ", isFullscreen:true, video.width=" + $("video").width());    
+          setTimeout(function(){ 
+            log("iFramed:" + iFramed() + ", isFullscreen:true, video.width=" + $("video").width());
+          }, 3000);
         } else {
           log("iFramed:" + iFramed() + ", isFullscreen:false, video.width=" + $("video").width());     
         }
