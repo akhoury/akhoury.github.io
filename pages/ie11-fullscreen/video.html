@@ -7,11 +7,14 @@
 </head>
 <body>
   <h1>test</h1>
-  <video id="myvid" class="fullScreen" controls="controls" width="300">
-    <source src="http://samples.msdn.microsoft.com/Workshop/samples/media/fullscreen/demo.mp4" type="video/mp4" />
-    <source src="http://samples.msdn.microsoft.com/Workshop/samples/media/fullscreen/demo.ogv" type="video/ogg" />
-    Sorry, video isn't supported
-  </video>
+  <!--<video id="myvid" class="fullScreen" controls="controls" width="300">-->
+  <!--  <source src="http://samples.msdn.microsoft.com/Workshop/samples/media/fullscreen/demo.mp4" type="video/mp4" />-->
+  <!--  <source src="http://samples.msdn.microsoft.com/Workshop/samples/media/fullscreen/demo.ogv" type="video/ogg" />-->
+  <!--  Sorry, video isn't supported-->
+  <!--</video>-->
+  
+  <div id="myvid" style="background: red; width: 300px; height: 300px;cursor:pointer;"></div>
+  
   <br/>
   <button id="clearLog">clear log</button>
   <div id="log"></div>
@@ -19,6 +22,10 @@
   <script>
     $("#clearLog").click(function() {
       $("#log").empty();
+    });
+    
+    $("#myvid").click(function() {
+      isFullscreen() ? exitFullscreen() : enterFullScreen(document);
     });
     
     var log = function(m) {
