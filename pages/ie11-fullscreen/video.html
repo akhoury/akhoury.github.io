@@ -68,8 +68,8 @@
     var onFullscreenChange = function() {
         if (isFullscreen()) {
           setTimeout(function() {
-            window.v = document.getElementById("myvid");
-            log("iFramed:" + iFramed() + ", isFullscreen:true, video.width=" + window.v.offsetWidth);
+            top.v = document.getElementById("myvid");
+            log("iFramed:" + iFramed() + ", isFullscreen:true, video.width=" + top.v.offsetWidth);
           }, 3000);
         } else {
           log("iFramed:" + iFramed() + ", isFullscreen:false, video.width=" + $("video").width());     
