@@ -76,7 +76,7 @@
         if (isFullscreen()) {
           setTimeout(function() {
             top.myel = document.getElementById("myel");
-            log("iFramed:" + iFramed() + ", isFullscreen:true, el.width=" + top.v.offsetWidth);
+            log("iFramed:" + iFramed() + ", isFullscreen:true, el.width=" + top.myel.offsetWidth);
           }, 3000);
         } else {
           log("iFramed:" + iFramed() + ", isFullscreen:false, el.width=" + $(top.myel).width());     
