@@ -72,11 +72,7 @@
 
     var onFullscreenChange = function() {
         if (isFullscreen()) {
-          
-          // just in case we're measuring too quickly?
-          setTimeout(function() {
-            log("iFramed:" + iFramed() + ", isFullscreen:true, el.width=" + $(top.myel).width());
-          }, 1000);
+         log("iFramed:" + iFramed() + ", isFullscreen:true, el.width=" + $(top.myel).width());
           
         } else {
           log("iFramed:" + iFramed() + ", isFullscreen:false, el.width=" + $(top.myel).width());     
