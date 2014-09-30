@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+  <video class="fullScreen" controls="controls" width="300">
+    <source src="http://samples.msdn.microsoft.com/Workshop/samples/media/fullscreen/demo.mp4" type="video/mp4" />
+    <source src="http://samples.msdn.microsoft.com/Workshop/samples/media/fullscreen/demo.ogv" type="video/ogg" />
+    Sorry, video isn't supported
+  </video>
+  <br/>
+  <button id="clearLog">clear log</button>
+  <div id="log"></div>
+  
+  <script>
+    $("#clearLog").click(function() {
+      $("#log").empty();
+    });
+    
+    var log = function(m) {
+       $("#log").append($("<p />").html(m));  
+    };
+    
+    var iFramed = function() {
+      return window.location !== window.parent.location;
+    }
+    
+    var isFullscreen = function () {
+      return !!(document.fullscreen || document.mozFullScreen || document.webkitIsFullScreen || document.msFullscreenElement);
+    };
+    
+    var getFullscreenElement = function () {
+      return document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+    };
+    
+    var enterFullScreen = function (el) {
+      el = el || document.body;
+      if (el.requestFullscreen) {
+        el.requestFullscreen();
+      } else if (el.msRequestFullscreen) {
+        el.msRequestFullscreen();
+      } else if (el.mozRequestFullScreen) {
+        el.mozRequestFullScreen();
+      } else if (el.webkitRequestFullscreen) {
+        el.webkitRequestFullscreen();
+      } else {
+        console.log("Fullscreen API is not supported");
+      } 
+     };
+    
+    var exitFullscreen = function () {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitCancelFullScreen) {
+        document.webkitCancelFullScreen();
+      } 
+      inFullScreen = false;
+    }
+    
+    var onFullscreenChange = function() {
+        if (isFullscreen()) {
+          log("iFramed:" + iFramed() + ", isFullscreen:true, video.width=" + $("video").width());    
+        } else {
+          log("iFramed:" + iFramed() + ", isFullscreen:false, video.width=" + $("video").width());     
+        }
+    };
+    
+    $(document.documentElement).on('fullscreenchange webkitfullscreenchange', onFullscreenChange);
+    $(document).on('mozfullscreenchange MSFullscreenChange', onFullscreenChange);
+
+</script>
+</body>
+</html>
