@@ -6,6 +6,7 @@
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
+  <h1>test</h1>
   <video id="myvid" class="fullScreen" controls="controls" width="300">
     <source src="http://samples.msdn.microsoft.com/Workshop/samples/media/fullscreen/demo.mp4" type="video/mp4" />
     <source src="http://samples.msdn.microsoft.com/Workshop/samples/media/fullscreen/demo.ogv" type="video/ogg" />
@@ -67,8 +68,8 @@
     var onFullscreenChange = function() {
         if (isFullscreen()) {
           setTimeout(function() {
-            v = document.getElementById("myvid");
-            log("iFramed:" + iFramed() + ", isFullscreen:true, video.width=" + v.offsetWidth);
+            window.v = document.getElementById("myvid");
+            log("iFramed:" + iFramed() + ", isFullscreen:true, video.width=" + window.v.offsetWidth);
           }, 3000);
         } else {
           log("iFramed:" + iFramed() + ", isFullscreen:false, video.width=" + $("video").width());     
