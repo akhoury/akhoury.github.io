@@ -1,1 +1,60 @@
-a
+
+User-agent: baiduspider
+Disallow: /073bbcc6c1fea34443731a7e88f1cdaa5a54f0e20B9rldDuKlSBmVzlIQUlvRTJUQ0E
+
+User-agent: CCBot
+Disallow: /073bbcc6c1fea34443731a7e88f1cdaa5a54f0e20B9rldDuKlSBmVzlIQUlvRTJUQ0E
+
+User-agent: coccoc
+Disallow: /073bbcc6c1fea34443731a7e88f1cdaa5a54f0e20B9rldDuKlSBmVzlIQUlvRTJUQ0E
+
+User-agent: dotbot
+Disallow: /073bbcc6c1fea34443731a7e88f1cdaa5a54f0e20B9rldDuKlSBmVzlIQUlvRTJUQ0E
+
+User-agent: duckduckbot
+Disallow: /073bbcc6c1fea34443731a7e88f1cdaa5a54f0e20B9rldDuKlSBmVzlIQUlvRTJUQ0E
+
+User-agent: Googlebot
+Disallow: /073bbcc6c1fea34443731a7e88f1cdaa5a54f0e20B9rldDuKlSBmVzlIQUlvRTJUQ0E
+
+User-agent: ia_archiver
+Disallow: /073bbcc6c1fea34443731a7e88f1cdaa5a54f0e20B9rldDuKlSBmVzlIQUlvRTJUQ0E
+
+User-agent: IntuitGSACrawler
+Disallow: /073bbcc6c1fea34443731a7e88f1cdaa5a54f0e20B9rldDuKlSBmVzlIQUlvRTJUQ0E
+
+User-agent: msnbot
+Disallow: /073bbcc6c1fea34443731a7e88f1cdaa5a54f0e20B9rldDuKlSBmVzlIQUlvRTJUQ0E
+
+User-agent: naverbot
+Disallow: /073bbcc6c1fea34443731a7e88f1cdaa5a54f0e20B9rldDuKlSBmVzlIQUlvRTJUQ0E
+
+User-agent: red-app-gsa-p-one
+Disallow: /073bbcc6c1fea34443731a7e88f1cdaa5a54f0e20B9rldDuKlSBmVzlIQUlvRTJUQ0E
+
+User-agent: rogerbot
+Disallow: /073bbcc6c1fea34443731a7e88f1cdaa5a54f0e20B9rldDuKlSBmVzlIQUlvRTJUQ0E
+
+User-agent: SandDollar
+Disallow: /073bbcc6c1fea34443731a7e88f1cdaa5a54f0e20B9rldDuKlSBmVzlIQUlvRTJUQ0E
+
+User-agent: seznambot
+Disallow: /073bbcc6c1fea34443731a7e88f1cdaa5a54f0e20B9rldDuKlSBmVzlIQUlvRTJUQ0E
+
+User-agent: Slurp
+Disallow: /073bbcc6c1fea34443731a7e88f1cdaa5a54f0e20B9rldDuKlSBmVzlIQUlvRTJUQ0E
+
+User-agent: Swiftbot
+Disallow: /073bbcc6c1fea34443731a7e88f1cdaa5a54f0e20B9rldDuKlSBmVzlIQUlvRTJUQ0E
+
+User-agent: Telefonica
+Disallow: /073bbcc6c1fea34443731a7e88f1cdaa5a54f0e20B9rldDuKlSBmVzlIQUlvRTJUQ0E
+
+User-agent: teoma
+Disallow: /073bbcc6c1fea34443731a7e88f1cdaa5a54f0e20B9rldDuKlSBmVzlIQUlvRTJUQ0E
+
+User-agent: Twitterbot
+Disallow: /073bbcc6c1fea34443731a7e88f1cdaa5a54f0e20B9rldDuKlSBmVzlIQUlvRTJUQ0E
+
+User-agent: Yandex
+Disallow: /073bbcc6c1fea34443731a7e88f1cdaa5a54f0e20B9rldDuKlSBmVzlIQUlvRTJUQ0E
