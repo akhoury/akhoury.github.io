@@ -1,0 +1,42 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+.mcsv-app {
+    margin-top: 20px;
+}
+#left-csv-editor,
+#right-csv-editor,
+#merged-csv-editor {
+    height: 200px;
+}
+.alert {
+    width: 100%;
+    display: block;
+    padding: 0;
+    border: none;
+    text-align: center;
+    color: black;
+    background-color: #dfddd6;
+    overflow: hidden;
+}
+.alert.error {
+    background-color: #ff9595;
+}
+.alert.info {
+    background-color: #b2d8ff;
+}
+.alert.success {
+    background-color: #b9ffc1;
+}
+.alert.warn {
+    background-color: #ffba7b;
+}
+
+
+
+
+
+
+
+
