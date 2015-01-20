@@ -48,8 +48,10 @@ $(function() {
 				return;
 			}
 
-			var lci = leftColEl.val() || 0;
-			var rci = rightColEl.val() || 0;
+			var lci = leftColEl.val();
+			lci = lci < 1 ? 0 : lci - 1;
+			var rci = rightColEl.val();
+			rci = rci < 1 ? 0 : rci - 1;
 
 			var mergedData = [], str = '';
 			var ic = ignoreCaseEl.is(':checked');

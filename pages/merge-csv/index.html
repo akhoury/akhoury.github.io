@@ -48,8 +48,11 @@
             <label for="config">Config</label>
             <div id="config">
                 <p>Merge left input's column number:
-                <input id="left-column" type="number" min="0" placeholder="0" > (<input id="left-headers" type="checkbox" /> using a header row) </p>
-                <p>With right input's column number <input id="right-column" type="number" min="0" placeholder="0" /> (<input id="right-headers" type="checkbox" /> using a header row) </p>
+                    <input id="left-column" type="number" min="1" placeholder="1" > (<input id="left-headers" type="checkbox" /> using a header row)
+                </p>
+                <p>With right input's column number
+                    <input id="right-column" type="number" min="1" placeholder="1" /> (<input id="right-headers" type="checkbox" /> using a header row)
+                </p>
                 <p>Oh and also <input id="ignore-case" type="checkbox" checked /> ignore cases please.</p>
             </div>
             <div class="alert csv-alert"></div>
