@@ -1,0 +1,83 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    background: #ffffff;
+}
+#content {
+    margin: 0 auto;
+    min-height: 10px;
+    max-width: 1200px;
+}
+.text-center {
+    text-align: center;
+}
+.hand {
+    cursor: pointer;
+}
+.muted {
+    color: #777;
+}
+.transcript,
+.answer {
+    margin: 1em 0;
+}
+.answer {
+    font-size: xx-large;
+}
+.player {
+    padding-top: 56.3%;
+    position: relative;
+}
+.player video {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+.mic {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border: 0 solid #d44136;
+    border-radius: 50%;
+    -webkit-box-shadow: inset 0px 0px 60px 60px rgba(212,65,54,1);
+    -moz-box-shadow: inset 0px 0px 60px 60px rgba(212,65,54,1);
+    box-shadow: inset 0px 0px 60px 60px rgba(212,65,54,1);
+}
+.mic.mic-on {
+    opacity: 0.8;
+}
+.mic.mic-off {
+    -webkit-animation: mic-border 1s infinite;
+    animation: mic-border 1s infinite;
+    animation-direction: alternate;
+    -webkit-animation-direction: alternate;
+    opacity: 0.5;
+}
+@-webkit-keyframes mic-border {
+    from {
+        border-width: 0;
+        top: 20px;
+        right: 20px;
+    }
+    to {
+        border-width: 20px;
+        top: 0;
+        right: 0;
+    }
+}
+@keyframes mic-border {
+    from {
+        border-width: 0;
+        top: 20px;
+        right: 20px;
+    }
+    to {
+        border-width: 20px;
+        top: 0;
+        right: 0;
+    }
+}

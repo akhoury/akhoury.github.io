@@ -1,0 +1,28 @@
+
+<p class="muted">
+    I can answer 3 questions:
+    <ul>
+        <li>How much experience do you have?</li>
+        <li>What does your team do?</li>
+        <li>How is your media outreach?</li>
+    </ul>
+    <small>
+        Remember, this is a single video, so I DO NOT have "idle state" video, and I have to start and pause at certain times, so it's the not the best experience, but that's all I can do without actual videos.
+    </small>
+<p>
+
+<div class="player">
+    <video autoplay src="{{ (root || '') + (answer.media || '') }}" poster="{{ (root || '') + (answer.poster || '/media/fake.png')}}"></video>
+    <img
+            on-click="micToggle"
+            src="{{root || ''}}/img/mic.png"
+            class="mic {{#if !recognizing && mic.on}}hand mic-on{{else}}mic-off{{/if}}"/>
+</div>
+
+{{#if transcript}}
+    <div class="transcript">I think you said: <span class="muted">"{{transcript}}"</span></div>
+{{/if}}
+
+{{#if answer.answer}}
+    <blockquote class="answer muted">Short answer: "{{answer.answer}}"</blockquote>
+{{/if}}
