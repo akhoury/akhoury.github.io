@@ -14,21 +14,14 @@
     <input
            on-keydown="inputKeydown"
            type="text"
-           placeholder="Type your question here or click on the mic and say it.">
-</div>
-
-<div class="player">
-    <video autoplay src="{{ (root || '') + (answer.media || '') }}" poster="{{ (root || '') + (answer.poster || '/media/fake.png')}}"></video>
+           placeholder="Type your question here or click on the mic and say it."
+           value="{{transcript}}"
+            >
     <img
             on-click="micToggle"
             src="{{root || ''}}/img/mic.png"
             class="mic {{#if !recognizing && mic.on}}hand mic-on{{else}}mic-off{{/if}}"/>
 </div>
-
-{{#if transcript}}
-    <div class="transcript">I think you said: <span class="muted">"{{transcript}}"</span></div>
-{{/if}}
-
-{{#if answer.answer}}
-    <blockquote class="answer muted">Short answer: "{{answer.answer}}"</blockquote>
-{{/if}}
+<div class="player">
+    <video autoplay src="{{ (root || '') + (answer.media || '') }}" poster="{{ (root || '') + (answer.poster || '/media/fake.png')}}"></video>
+</div>
