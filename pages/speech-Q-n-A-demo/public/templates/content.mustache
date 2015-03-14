@@ -1,15 +1,21 @@
-
-<p class="muted">
-    I can answer 3 questions:
+<div class="muted header-note">
+        I can answer 3 questions:
     <ul>
-        <li>How much experience do you have?</li>
-        <li>What does your team do?</li>
-        <li>How is your media outreach?</li>
+        <li><i>How much experience do you have?</i></li>
+        <li><i>What does your team do?</i></li>
+        <li><i>How is your media outreach?</i></li>
     </ul>
     <small>
         Remember, this is a single video, so I DO NOT have "idle state" video, and I have to start and pause at certain times, so it's the not the best experience, but that's all I can do without actual videos.
     </small>
-<p>
+</div>
+
+<div class="text-input">
+    <input
+           on-keydown="inputKeydown"
+           type="text"
+           placeholder="Type your question here or click on the mic and say it.">
+</div>
 
 <div class="player">
     <video autoplay src="{{ (root || '') + (answer.media || '') }}" poster="{{ (root || '') + (answer.poster || '/media/fake.png')}}"></video>

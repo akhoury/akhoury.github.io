@@ -17,6 +17,8 @@
 
     $.when.apply(null, deferreds).then(init);
 
+    var view;
+
     function init () {
         var recognition = app.recognition = new app.Recognition({debug: true});
 
@@ -32,35 +34,10 @@
         recognition.on('first.transcript', function(e, data) {
             var text = data.transcript;
             view.set('transcript', text);
-
-            guess(text).done(function(questions) {
-                view.set('questions', questions);
-
-                questions.sort(function(q1, q2) {
-                    return q1.hits < q2.hits ? 1 : q1.hits > q2.hits ? -1 : 0;
-                });
-                var answer = questions[0];
-                view.set('answer', answer);
-
-                var $v = $(view.el).find('video');
-                var v = $v.get(0);
-
-                $v.one('seeked', function() {
-                    v.play();
-                });
-                v.currentTime = answer.start;
-
-                var ontimeupdate = function() {
-                    if (v.currentTime >= answer.stop) {
-                        v.pause();
-                        $v.off('timeupdate', ontimeupdate);
-                    }
-                };
-                $v.on('timeupdate', ontimeupdate);
-            })
+            guess(text).done(onGuess);
         });
 
-        var view = app.view = new Ractive({
+        view = app.view = new Ractive({
             el: '#content',
             template: app.templates['content'],
             data: {
@@ -74,22 +51,73 @@
             },
             oninit: function () {
                 this.on({
-                    'micToggle': this.onMicToggle
+                    'micToggle': this.onMicToggle,
+                    'inputKeydown': this.onInputKeydown
                 });
             },
             onMicToggle: function() {
                 if (!recognition.start()) {
                     recognition.stop();
                 }
+            },
+            onInputKeydown: function (e) {
+                var key = e.original.which || e.original.keyCode || e.original.charCode;
+
+                clearTimeout(this._timeout);
+
+                var go = function() {
+                    guess(e.node.value).done(onGuess);
+                }.bind(this);
+
+                // enter will fire a search
+                if (key === 13) {
+                    go();
+                } else if (key === 27) {
+                    // esc key will clear the input field
+                    e.node.value = "";
+                } else {
+                    // if you type and wait 2 seconds, it till fire a search
+                    this._timeout = setTimeout(go, 2000);
+                }
+
             }
         });
     }
 
+    function onGuess (questions) {
+        view.set('questions', questions);
+
+        questions.sort(function(q1, q2) {
+            return q1.hits < q2.hits ? 1 : q1.hits > q2.hits ? -1 : 0;
+        });
+        var answer = questions[0];
+        view.set('answer', answer);
+
+        var $v = $(view.el).find('video');
+        var v = $v.get(0);
+        v.load();
+
+        $v.one('seeked', function() {
+            v.play();
+        });
+        v.currentTime = answer.start;
+
+        var ontimeupdate = function() {
+            if (v.currentTime >= answer.stop) {
+                v.pause();
+                $v.off('timeupdate', ontimeupdate);
+            }
+        };
+        $v.on('timeupdate', ontimeupdate);
+    }
+
     function guess (str) {
+        var dfd = new $.Deferred();
+        if (!str) return dfd.reject('no value');
+
         if (!app.questions) {
             return $.get('/question?q=' + str);
         }
-        var dfd = new $.Deferred();
         setTimeout(function() {
             dfd.resolve(app.questions.guess(str));
         });
