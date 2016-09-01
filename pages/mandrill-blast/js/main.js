@@ -271,7 +271,6 @@ $(function() {
                         resultsEl.prepend( ''
                             + '<div class="alert info">'
                             + '<p>All Emails were queued up! Now track the delivery reports on your <a href="http://mandrill.com">mandrill.com</a> account.</p>'
-							+ '<p>I intentionally reset the emails list so you don\'t accidentally resend but persisted your other info, which you can clear using the clear button on the right.</p>'
                             + '</div>');
 
                         btn.prop('disabled', false);
