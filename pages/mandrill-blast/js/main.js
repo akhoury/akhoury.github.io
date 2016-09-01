@@ -10,6 +10,7 @@ $(function() {
 			'editorCSV': null,
 			'editorHTML': null
 		},
+        template,
         rows = [],
         data = [],
 
@@ -54,6 +55,32 @@ $(function() {
         appEl = $('.mbo-app'),
         formEl = $('.mbo-form'),
         jumbotronEl = $('.jumbotron'),
+
+        resolveType = function (token) {
+            // guesses and resolves type of a string
+            if( typeof token != "string")
+                return token;
+            if( token.length < 15 && token.match(/^(0|-?(0\.|[1-9]\d*\.?)\d*)$/ ) ){
+                // don't match long ints where we would lose precision
+                // don't match numeric strings with leading zeros that are not decimals or "0"
+                token = parseFloat(token);
+            }
+            else if( token.match(/^true|false$/i) ){
+                token = Boolean( token.match(/true/i) );
+            }
+            else if(token === "undefined" ){
+                token = undefined;
+            }
+            else if(token === "null" ){
+                token = null;
+            }
+
+            try  {
+                token = JSON.parse(token);
+            } catch (e) {}
+
+            return token;
+        },
 
         getStorage = function() {
             if (window.localStorage) {
@@ -119,7 +146,7 @@ $(function() {
                     rows.forEach(function(row, i) {
                         var _row = {};
                         row.forEach(function(columnValue, j) {
-                            _row[keys[j]] = columnValue;
+                            _row[keys[j]] = resolveType(columnValue);
                         });
                         data.push(_row);
                     });
@@ -323,12 +350,8 @@ $(function() {
 			var config = {};
 			inputs.each(function(i, input) {
 				var key = $(input).attr('id');
-				var value = nodeValue(input);
-				config[key] = value;
+				config[key] = nodeValue(input);
 			});
-
-			// dont store the emails
-			delete config.editorCSV;
 
 			setStorage(config);
 		},
@@ -342,13 +365,38 @@ $(function() {
 		},
 
 		init = function() {
-			attachActions();
+
+            Handlebars.registerHelper("x", function (expression, options) {
+                var fn = function(){}, result;
+                try {
+                    fn = Function.apply(this, ["window", "return " + expression + " ;"]);
+                } catch (e) {
+                    console.warn("{{x " + expression + "}} has invalid javascript", e);
+                }
+                try {
+                    result = fn.call(this, window);
+                } catch (e) {
+                    console.warn("{{x " + expression + "}} hit a runtime error", e);
+                }
+                return result;
+            });
+
+            Handlebars.registerHelper("xif", function (expression, options) {
+                return Handlebars.helpers["x"].apply(this, [expression, options]) ? options.fn(this) : options.inverse(this);
+            });
+
+
+            attachActions();
 			editors.editorCSV = ace.edit('editorCSV');
 			editors.editorHTML = ace.edit('editorHTML');
+
+            editors.editorCSV.$blockScrolling = Infinity;
+            editors.editorHTML.$blockScrolling = Infinity;
+
 			editors.editorHTML.getSession().setMode('ace/mode/html');
 
-			editors.editorHTML.getSession().setValue(defaultHTML);
-			editors.editorCSV.getSession().setValue(defaultCSV);
+			editors.editorHTML.getSession().setValue(defaultHTML, 1);
+			editors.editorCSV.getSession().setValue(defaultCSV, 1);
 
 			var storage = getStorage();
 			if (storage) {
@@ -361,8 +409,17 @@ $(function() {
 					nodeValue('#' + id, storage[id]);
 				});
 			}
+            var inputs = $('input, .ace_editor');
 
-			parseCSV();
+            var onchangePersistTimeout;
+            inputs.on('change', function() {
+                clearTimeout(onchangePersistTimeout);
+                onchangePersistTimeout = setTimeout(function() {
+                        persist();
+                }, 500);
+            });
+
+            parseCSV();
 			preview();
 		};
 
