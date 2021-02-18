@@ -247,7 +247,9 @@ $(function() {
                                     to: [
                                         {email: row[toEmailColumn], name: row[toNameColumn] || ''}
                                     ],
-                                    auto_text: true
+                                    auto_text: true,
+                                    track_opens: true,
+                                    track_clicks: true
                                 },
                                 async: true
                             },
