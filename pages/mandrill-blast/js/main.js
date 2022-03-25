@@ -223,6 +223,7 @@ $(function() {
                     from_name = $('#emailFromName').val(),
                     toEmailColumn = $('#emailToAddressColumn').val(),
                     toNameColumn = $('#emailToNameColumn').val(),
+                    sendAt = $('#sendAt').val(),
                     resultsEl = $('#blast-results');
 
                 resultsEl.empty();
@@ -263,6 +264,23 @@ $(function() {
                                 resultsEl.prepend('<div class="alert error">' + JSON.stringify(response) + '</div>');
                                 deferred.reject();
                             };
+                            
+                        if(!!sendAt){
+                            const localDateTime = new Date(sendAt);
+                            const utcDateTime = [
+                                [
+                                    localDateTime.getUTCFullYear(),
+                                    localDateTime.getUTCMonth()+1,
+                                    localDateTime.getUTCDate()
+                                ].join("-"),
+                                [
+                                    localDateTime.getUTCHours(),
+                                    localDateTime.getUTCMinutes(),
+                                    localDateTime.getUTCSeconds(),
+                                ].join(":")
+                            ].join(" ")
+                            params.send_at = utcDateTime
+                        }
 
                         deferreds.push(deferred);
                         md.messages.send(params, success, error);
