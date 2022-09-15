@@ -101,9 +101,20 @@
                             <p class="help-block">What is the email column called, for each record, default is email, and it's case sensitive</p>
                         </div>
                         <div class="form-group">
+                            <label for="ccToAddressColumn">Additional Receivers' (CC) 'Email address' CSV field name [REQUIRED]</label>
+                            <input type="text" class="form-control" id="ccToAddressColumn" placeholder="email" value="">
+                            <p class="help-block">What is the cc column called, for each record, default is cc, and it's case sensitive</p>
+                        </div>
+                        <div class="form-group">
                             <label for="emailToNameColumn">Receivers' 'Name' CSV field name</label>
                             <input type="text" class="form-control" id="emailToNameColumn" placeholder="name" value="">
                             <p class="help-block">What is the name column called, if you have one, and it's case sensitive</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sendAt">Send at date-time</label>
+                            <input type="text" class="form-control" id="sendAt" placeholder="9999-12-31 23:59" value="">
+                            <p class="help-block">You can set a date and time at which the emails should be sent</p>
                         </div>
 
                     </div>

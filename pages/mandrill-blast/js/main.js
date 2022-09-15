@@ -222,7 +222,9 @@ $(function() {
                     from_email = $('#emailFromAddress').val(),
                     from_name = $('#emailFromName').val(),
                     toEmailColumn = $('#emailToAddressColumn').val(),
+                    ccToAddressColumn = $('#ccToAddressColumn').val(),
                     toNameColumn = $('#emailToNameColumn').val(),
+                    sendAt = $('#sendAt').val(),
                     resultsEl = $('#blast-results');
 
                 resultsEl.empty();
@@ -245,9 +247,12 @@ $(function() {
                                     from_email: from_email,
                                     from_name: from_name,
                                     to: [
-                                        {email: row[toEmailColumn], name: row[toNameColumn] || ''}
+                                        {email: row[toEmailColumn], name: row[toNameColumn] || '', type:"to"}
                                     ],
-                                    auto_text: true
+                                    auto_text: true,
+                                    track_opens: true,
+                                    track_clicks: true,
+                                    preserve_recipients: true
                                 },
                                 async: true
                             },
@@ -261,6 +266,28 @@ $(function() {
                                 resultsEl.prepend('<div class="alert error">' + JSON.stringify(response) + '</div>');
                                 deferred.reject();
                             };
+                            
+                        if(!!sendAt){
+                            const localDateTime = new Date(sendAt);
+                            const utcDateTime = [
+                                [
+                                    localDateTime.getUTCFullYear(),
+                                    localDateTime.getUTCMonth()+1,
+                                    localDateTime.getUTCDate()
+                                ].join("-"),
+                                [
+                                    localDateTime.getUTCHours(),
+                                    localDateTime.getUTCMinutes(),
+                                    localDateTime.getUTCSeconds(),
+                                ].join(":")
+                            ].join(" ")
+                            params.send_at = utcDateTime
+                        }
+
+                        if(row[ccToAddressColumn].length>1) params.message.to.push({
+                            email: row[ccToAddressColumn],
+                            type:"cc"
+                        })
 
                         deferreds.push(deferred);
                         md.messages.send(params, success, error);
